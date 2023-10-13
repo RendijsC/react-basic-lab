@@ -2,13 +2,12 @@ import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
 
 const AddTaskForm = (props) => {
 
   return (
-    <div>
-      <form onSubmit={props.submit} >
-      <Box
+    <Box
       component="form"
       sx={{
         '& .MuiOutlinedInput-root': { m: 1, width: '30ch' },
@@ -47,6 +46,19 @@ const AddTaskForm = (props) => {
         />
       </div>
       <div>
+        <TextField
+          select
+          label="Priority"
+          name="priority"
+          value={props.formState.priority}
+          onChange={(event) => props.change(event)}
+        >
+          <MenuItem value="low">Low</MenuItem>
+          <MenuItem value="medium">Medium</MenuItem>
+          <MenuItem value="high">High</MenuItem>
+        </TextField>
+      </div>
+      <div>
         <Button 
           type="submit"
           variant="contained"
@@ -61,8 +73,6 @@ const AddTaskForm = (props) => {
         </Button>
       </div>
     </Box>
-        </form>
-    </div>
   )
 };
 
